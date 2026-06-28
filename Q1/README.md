@@ -1,38 +1,13 @@
 # Universal Guide: FastAPI Deployment Questions
 
-## Step 1: Find Your Allowed Origin
+## Step 1: Get Your Unique Values
+Before you begin, look at the "Your assigned values" panel on your assignment portal. 
+You must update the following variables in the script below:
 
-Run this in the browser console on the exam page:
-
-```javascript
-const user = JSON.parse(localStorage.getItem('user'));
-
-const questionId = [...document.querySelectorAll('[data-question]')]
-  .map(el => el.dataset.question)
-  .find(q => q.includes('cors') || q.includes('fastapi'));
-
-console.log("Question ID:", questionId);
-
-const resp = await fetch('/backendVerify', {
-  method: 'POST',
-  headers: {'Content-Type': 'application/json'},
-  body: JSON.stringify({
-    email: user.email,
-    quizSign: user.quizSign,
-    questionId: questionId,
-    weight: 1.5,
-    version: '',
-    response: 'https://example.com'
-  })
-});
-
-const data = await resp.json();
-console.log("Full error:", data.error);
-// Look for: "CORS preflight from https://YOUR-ORIGIN must echo..."
-// That URL is your ALLOWED_ORIGIN
-```
-
-The error message will reveal your assigned allowed origin directly.
+| Variable in Script | Where to find it |
+| :--- | :--- |
+| `EMAIL` | Your logged-in email address |
+| `ALLOWED_ORIGIN` | Copy from "Allowed CORS origin" in the panel |
 
 ---
 
