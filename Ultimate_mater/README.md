@@ -548,7 +548,7 @@ CMD ["./start.sh"]
 Copy your Render web service URL (it will look something like `https://my-tds-exam.onrender.com`).
 Here is exactly what you should paste into the exam portal for each question:
 
-* **Q1**: `https://your-app.onrender.com/stats`
+* **Q1**: `https://your-app.onrender.com`
 * **Q2**: `https://your-app.onrender.com/verify`
 * **Q3**: `https://your-app.onrender.com/effective-config`
 * **Q4**: `https://your-app.onrender.com`
@@ -556,7 +556,9 @@ Here is exactly what you should paste into the exam portal for each question:
 * **Q6**: `https://your-app.onrender.com`
 * **Q7**: `{"url": "https://your-app.onrender.com/v1/chat/completions", "model": "qwen2.5:0.5b"}`
 * **Q8**: `https://your-app.onrender.com/extract`
-* **Q9**: `https://your-app.onrender.com/orders`
-* **Q10**: `https://your-app.onrender.com/ping`
+* **Q9**: `https://your-app.onrender.com`
+* **Q10**: `https://your-app.onrender.com`
 
 **(Replace `your-app` with your actual Render project name!)**
+
+### NOTE: Render url sleeps in 15 mins of inactiivty. and it will take 1-2 min to be awake. So wait while sabmiting or checking.
