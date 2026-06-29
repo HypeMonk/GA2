@@ -47,7 +47,7 @@ Look at the **4 columns** (OS Env, .env file, YAML, and Defaults) under **Q3** i
 
 *(Example: To find `Q3_PORT`, first check if `APP_PORT` exists in the "OS Env Vars" column. If it's not there, check "env file". If it's not there, check "YAML". If it's not there, use "Defaults".)*
 
-Create a file named **`config.py`** in your Hugging Face space, and paste the following:
+## Step 1.1: Create a file named **`config.py`** in your Hugging Face space, and paste the following:
 
 ```python
 # ==========================================
