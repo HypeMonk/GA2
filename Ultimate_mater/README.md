@@ -1,4 +1,4 @@
-# The Ultimate Render Monolith Guide (Q1 to Q10)
+# The Ultimate Render one-shot Guide (Q1 to Q10)
 
 This guide provides a single, all-in-one deployment on Render.com that solves **Questions 1 through 10** simultaneously. 
 
