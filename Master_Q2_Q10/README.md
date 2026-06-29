@@ -25,7 +25,6 @@ Before you begin, look at the **"Your assigned values"** panel on your assignmen
 | `ISSUER` | Under **Q2**: Copy from "Issuer (iss)" in the panel |
 | `AUDIENCE` | Under **Q2**: Copy from "Audience (aud)" in the panel |
 | `PUBLIC_KEY_PEM` | Under **Q2**: Copy the entire "IdP public key (RS256)" block (including BEGIN/END headers) |
-FOR Q3, Look at the 4 columns in your panel and find the final value for each variable by checking them in RIGHT to LEFT order. | (For example: To find your port, check OS ENV vars for APP_PORT. If it's not there, check .env file for APP_PORT. If it's not there, check yaml columns for port.)
 | `Q3_PORT` | Under **Q3**: Port number manually merged from the YAML files |
 | `Q3_WORKERS` | Under **Q3**: Workers count manually merged from the YAML files |
 | `Q3_DEBUG` | Under **Q3**: Debug boolean manually merged from the YAML files (`True` or `False`) |
@@ -35,6 +34,18 @@ FOR Q3, Look at the 4 columns in your panel and find the final value for each va
 | `Q9_RATE_LIMIT` | Under **Q9**: Copy "Rate-limit bucket (R)" in the panel |
 | `Q10_ALLOWED_ORIGIN` | Under **Q10**: Copy "Allowed CORS origin" in the panel |
 | `Q10_RATE_LIMIT` | Under **Q10**: Copy "Rate-limit bucket (B)" in the panel |
+
+### ⚠️ Q3 Config Precedence
+Look at the **4 columns** (OS Env, .env file, YAML, and Defaults) under **Q3** in your assignment portal. Find the final value for each variable by checking columns from **left to right** (highest priority to lowest priority). Stop at the first column where you see the variable!
+
+| Variable to Update | 1st Place (OS Env) | 2nd Place (.env) | 3rd Place (YAML) | 4th Place (Defaults) |
+| :--- | :--- | :--- | :--- | :--- |
+| `Q3_PORT` | `APP_PORT` | `APP_PORT` | `port` | `port` |
+| `Q3_WORKERS` | `APP_WORKERS` | `NUM_WORKERS` | `workers` | `workers` |
+| `Q3_DEBUG` | `APP_DEBUG` | `APP_DEBUG` | `debug` | `debug` |
+| `Q3_LOG_LEVEL` | `APP_LOG_LEVEL` | `APP_LOG_LEVEL` | `log_level` | `log_level` |
+
+*(Example: To find `Q3_PORT`, first check if `APP_PORT` exists in the "OS Env Vars" column. If it's not there, check "env file". If it's not there, check "YAML". If it's not there, use "Defaults".)*
 
 Create a file named **`config.py`** in your Hugging Face space, and paste the following:
 
@@ -450,6 +461,7 @@ httpx
 redis
 prometheus-client
 PyJWT
+cryptography
 pydantic
 ```
 
