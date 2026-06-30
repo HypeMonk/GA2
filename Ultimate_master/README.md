@@ -21,10 +21,10 @@ Look at the **"Your assigned values"** panel on your assignment portal for each 
 | `ISSUER` | Under **Q2**: Copy from "Issuer (iss)" |
 | `AUDIENCE` | Under **Q2**: Copy from "Audience (aud)" |
 | `PUBLIC_KEY_PEM` | Under **Q2**: Copy the entire "IdP public key (RS256)" block |
-| `Q3_PORT` | Under **Q3**: Port number manually merged from the YAML files |
-| `Q3_WORKERS` | Under **Q3**: Workers count manually merged from the YAML files |
-| `Q3_DEBUG` | Under **Q3**: Debug boolean manually merged (`True` or `False`) |
-| `Q3_LOG_LEVEL` | Under **Q3**: Log level manually merged (`"info"`, `"error"`, etc.) |
+| `Q3_PORT` | Refer to below guide for Q3 values |
+| `Q3_WORKERS` | Refer to below guide for Q3 values |
+| `Q3_DEBUG` | Refer to below guide for Q3 values |
+| `Q3_LOG_LEVEL` | Refer to below guide for Q3 values |
 | `Q5_API_KEY` | Under **Q5**: Copy from "X-API-Key" |
 | `Q9_TOTAL_ORDERS` | Under **Q9**: Copy "Total orders (T)" |
 | `Q9_RATE_LIMIT` | Under **Q9**: Copy "Rate-limit bucket (R)" |
@@ -32,17 +32,43 @@ Look at the **"Your assigned values"** panel on your assignment portal for each 
 | `Q10_RATE_LIMIT` | Under **Q10**: Copy "Rate-limit bucket (B)" |
 
 ---
-### ⚠️ Q3 Config Precedence
-Look at the **4 columns** (OS Env, .env file, YAML, and Defaults) under **Q3** in your assignment portal. Find the final value for each variable by checking columns from **left to right** (highest priority to lowest priority). Stop at the first column where you see the variable!
+### 🧠 Foolproof Guide for Q3 Values (Don't skip this!)
+Do not overthink this! For each variable, check the 4 columns under Q3 from **Left to Right**
 
-| Variable to Update | 1st check: OS Env | 2nd check: .env | 3rd check:  (YAML) | 4th check: (Defaults) |
-| :--- | :--- | :--- | :--- | :--- |
-| `Q3_PORT` | `APP_PORT` | `APP_PORT` | `port` | `port` |
-| `Q3_WORKERS` | `APP_WORKERS` | `NUM_WORKERS` | `workers` | `workers` |
-| `Q3_DEBUG` | `APP_DEBUG` | `APP_DEBUG` | `debug` | `debug` |
-| `Q3_LOG_LEVEL` | `APP_LOG_LEVEL` | `APP_LOG_LEVEL` | `log_level` | `log_level` |
+⚠️ **Priority check:** OS Env (box 4) ➡️ .env file (box 3) ➡️ YAML (box 2) ➡️ Defaults (box 1).
+
+The **very first** time you see the variable, that is your answer. Ignore the rest!
+
+**1. Finding `Q3_PORT`:**
+1. Look in **OS Env Vars**. Do you see `APP_PORT`? If yes, use that number. (You're done!)
+2. If no, look in **.env file**. Do you see `APP_PORT`? If yes, use that number.
+3. If no, look in **YAML** for `port`. If yes, use that number.
+4. If no, use the `port` from **Defaults**.
+
+**2. Finding `Q3_WORKERS`:**
+1. Look in **OS Env Vars** for `APP_WORKERS`. (Found it? Use it!)
+2. Look in **.env file** for `NUM_WORKERS`.
+3. Look in **YAML** for `workers`.
+4. Use **Defaults** for `workers`.
+
+**3. Finding `Q3_DEBUG`:**
+1. Look in **OS Env Vars** for `APP_DEBUG`. (Found it? Use it!)
+2. Look in **.env file** for `APP_DEBUG`.
+3. Look in **YAML** for `debug`.
+4. Use **Defaults** for `debug`.
+*(Note: True/False must be capitalized in Python, like `True` or `False`)*
+
+**4. Finding `Q3_LOG_LEVEL`:**
+1. Look in **OS Env Vars** for `APP_LOG_LEVEL`. (Found it? Use it!)
+2. Look in **.env file** for `APP_LOG_LEVEL`.
+3. Look in **YAML** for `log_level`.
+4. Use **Defaults** for `log_level`.
+*(Note: Text must be in quotes, like `"info"`)*
 
 *(Example: To find `Q3_PORT`, first check if `APP_PORT` exists in the "OS Env Vars" column. If it's not there, check "env file". If it's not there, check "YAML". If it's not there, use "Defaults".)*
+
+---
+
 
 ## Step 2: Create and Commit `config.py`
 Create a file named **`config.py`** in your repository and replace the placeholders with your unique values:
